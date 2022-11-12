@@ -30,7 +30,7 @@ class Person {
   }
 }
 
-class Student extends Person with Learner, Jumper{
+class Student extends Person with Learner, Jumper { // 여러 mixin 사용 가능
   late int _semester;
 
   int get getSemester => this._semester;
@@ -43,7 +43,7 @@ class Student extends Person with Learner, Jumper{
   }
 }
 
-mixin Learner {
+mixin Learner { // swift에서 protocol을 여러개 받을 수 있듯이 비슷하게 보면 될 듯, with와 사용, 상속은 extends
   void study() {
     print("study");
   }
