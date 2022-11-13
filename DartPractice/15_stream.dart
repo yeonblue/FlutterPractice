@@ -13,8 +13,9 @@ void main(List<String> args) {
     // stream이 끊기면 수행
     print("Done");
   }, onError: (error) {
+    // error 발생 시
     print("Error");
-  }, cancelOnError: true);
+  }, cancelOnError: true); // 에러 발생 시 shutdown
 }
 
 class NumberGenerator {
