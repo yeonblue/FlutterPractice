@@ -11,13 +11,21 @@ class MyApp extends StatelessWidget { // stateless므로 변화하지 않음
   Widget build(BuildContext context) { // 모든 widget은 build function을 가짐, flutter는 widget tree 구조
     return MaterialApp(
       title: 'Flutter Demo',
-
-      home: Scaffold(
+      theme: ThemeData(appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.amber 
+        ),
+      ),
+      debugShowCheckedModeBanner: false, // 우측 상단 디버그 사라지게
+      home: Scaffold( // one page를 의미(basic layout)
         backgroundColor: const Color.fromARGB(255, 127, 183, 216),
         appBar: AppBar(
           title: const Text("Flutter Basics"),
           ), 
         body: const CenterText(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => debugPrint("Clicked"),
+          child: const Icon(Icons.ac_unit),
+        ),
       ),
     );
   }
@@ -31,8 +39,26 @@ class CenterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Hello, World!"), // parent(Center)가 const므로 child는 const로 안해도 됨
+    return Center(
+      child: Container(
+        height: 200,
+        width: 200,
+        // color: Colors.yellow, boxDecoration을 썼기 때문에 사용 불가, crash남
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(30),
+          ),
+        child: const Center(
+          child: Text("Hello, World!",
+            style: TextStyle(
+              color: Colors.red, 
+              fontSize: 20,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold
+              ),
+          ),
+        ),
+      ), // parent(Center)가 const므로 child는 const로 안해도 됨
     );
   }
 }
@@ -65,3 +91,7 @@ class CenterText extends StatelessWidget {
 //     return Container();
 //   }
 // }
+
+// container
+// basic widget, height, width를 가짐
+// boxDecoration을 쓰면 color 사용 불가!, 위 소스 참고
