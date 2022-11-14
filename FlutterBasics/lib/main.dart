@@ -39,26 +39,42 @@ class CenterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 200,
-        width: 200,
-        // color: Colors.yellow, boxDecoration을 썼기 때문에 사용 불가, crash남
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(30),
+    return Container(
+      color: Colors.pink,
+      height: 300,
+      child: Column(
+        mainAxisSize: MainAxisSize.max, // 안그러면 길이가 최대로 잡힘, max도 마찬가지
+        mainAxisAlignment: MainAxisAlignment.center,   // y축
+        crossAxisAlignment: CrossAxisAlignment.end, // x축
+        children: [
+          Container(
+            color: Colors.green, 
+            child: const Padding( // refactor로 padding 손쉽게 넣을 수 있음
+              padding: EdgeInsets.all(16.0),
+              child: Text("First Hello, world!"),
+            ),
           ),
-        child: const Center(
-          child: Text("Hello, World!",
-            style: TextStyle(
-              color: Colors.red, 
-              fontSize: 20,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold
+          const SizedBox( // swiftui spacer 사이즈 준 거랑 비슷한 듯
+            height: 30,
+            width: double.infinity,
+          ),
+          Container(decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue,
+            ),
+            width: 200,
+            height: 200,
+            child: const Center(
+              child: Text("Hello",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                ),
               ),
-          ),
-        ),
-      ), // parent(Center)가 const므로 child는 const로 안해도 됨
+            ), 
+          )
+        ],
+      ),
     );
   }
 }
