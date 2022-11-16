@@ -47,6 +47,33 @@ class CenterText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,   // y축
         crossAxisAlignment: CrossAxisAlignment.end, // x축
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Expanded(
+                flex: 1, // 비율을 의미, flex를 두개를 10, 10 주면 50%, 50% 차지
+                child: Text("1. row1 veryverylong sentences..........."),
+              ),
+              Container(
+                height: 20,
+                width: 20,
+                color: Colors.yellow,
+              ),
+              const Flexible( // Expanded를 쓰면 남은 영역 모두 차지, row는 기본적으로 한 줄에 다 보여주려 함
+                child: Text(
+                  "2. row2 veryverylong sentences...........",
+                  maxLines: 2, // 2줄만 표시
+                  overflow: TextOverflow.ellipsis,
+                ), // flexible을 줘서 여러줄 표시 가능
+              ), 
+              const SizedBox(width: 10,),
+              Container(
+                width: 20,
+                height: 20,
+                color: Colors.green,
+              )
+            ],
+          ),
           Container(
             color: Colors.green, 
             child: const Padding( // refactor로 padding 손쉽게 넣을 수 있음
@@ -62,8 +89,8 @@ class CenterText extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: Colors.blue,
             ),
-            width: 200,
-            height: 200,
+            width: 150,
+            height: 150,
             child: const Center(
               child: Text("Hello",
                 style: TextStyle(
@@ -111,3 +138,6 @@ class CenterText extends StatelessWidget {
 // container
 // basic widget, height, width를 가짐
 // boxDecoration을 쓰면 color 사용 불가!, 위 소스 참고
+
+// column
+// vertical로 childrun 표시, scroll 불가
