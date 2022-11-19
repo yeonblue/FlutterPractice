@@ -4,23 +4,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget { // stateless므로 변화하지 않음
+class MyApp extends StatelessWidget {
+  // stateless므로 변화하지 않음
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) { // 모든 widget은 build function을 가짐, flutter는 widget tree 구조
+  Widget build(BuildContext context) {
+    // 모든 widget은 build function을 가짐, flutter는 widget tree 구조
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.amber 
-        ),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.amber),
       ),
       debugShowCheckedModeBanner: false, // 우측 상단 디버그 사라지게
-      home: Scaffold( // one page를 의미(basic layout)
+      home: Scaffold(
+        // one page를 의미(basic layout)
         backgroundColor: const Color.fromARGB(255, 127, 183, 216),
         appBar: AppBar(
           title: const Text("Flutter Basics"),
-          ), 
+        ),
         body: const CenterText(),
         floatingActionButton: FloatingActionButton(
           onPressed: () => debugPrint("Clicked"),
@@ -41,10 +43,9 @@ class CenterText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.pink,
-      height: 300,
       child: Column(
         mainAxisSize: MainAxisSize.max, // 안그러면 길이가 최대로 잡힘, max도 마찬가지
-        mainAxisAlignment: MainAxisAlignment.center,   // y축
+        mainAxisAlignment: MainAxisAlignment.center, // y축
         crossAxisAlignment: CrossAxisAlignment.end, // x축
         children: [
           Row(
@@ -59,14 +60,17 @@ class CenterText extends StatelessWidget {
                 width: 20,
                 color: Colors.yellow,
               ),
-              const Flexible( // Expanded를 쓰면 남은 영역 모두 차지, row는 기본적으로 한 줄에 다 보여주려 함
+              const Flexible(
+                // flex 값으로 지정한 비율 내에서, Expanded를 쓰면 남은 영역 모두 차지, row는 기본적으로 한 줄에 다 보여주려 함
                 child: Text(
                   "2. row2 veryverylong sentences...........",
                   maxLines: 2, // 2줄만 표시
                   overflow: TextOverflow.ellipsis,
                 ), // flexible을 줘서 여러줄 표시 가능
-              ), 
-              const SizedBox(width: 10,),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
               Container(
                 width: 20,
                 height: 20,
@@ -75,31 +79,58 @@ class CenterText extends StatelessWidget {
             ],
           ),
           Container(
-            color: Colors.green, 
-            child: const Padding( // refactor로 padding 손쉽게 넣을 수 있음
+            color: Colors.green,
+            child: const Padding(
+              // refactor로 padding 손쉽게 넣을 수 있음
               padding: EdgeInsets.all(16.0),
               child: Text("First Hello, world!"),
             ),
           ),
-          const SizedBox( // swiftui spacer 사이즈 준 거랑 비슷한 듯
+          const SizedBox(
+            // swiftui spacer 사이즈 준 거랑 비슷한 듯
             height: 30,
             width: double.infinity,
           ),
-          Container(decoration: BoxDecoration(
+          Container(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.blue,
             ),
             width: 150,
             height: 150,
             child: const Center(
-              child: Text("Hello",
+              child: Text(
+                "Hello",
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
                 ),
               ),
-            ), 
-          )
+            ),
+          ),
+          const SizedBox(height: 16,),
+          const SizedBox(
+            width: 100,
+            height: 100,
+            child: CircleAvatar(
+                backgroundImage: NetworkImage("https://picsum.photos/200")),
+          ),
+          Stack( // swiftui의 zstack 비슷한 듯
+            children: [
+              SizedBox(
+                width: 100,
+                height: 150,
+                child: Image.asset(
+                  'assets/logo.jpeg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const Positioned(
+                top: 130,
+                child: Text("Logo"),
+              ) 
+            ],
+          ),
         ],
       ),
     );
@@ -107,7 +138,7 @@ class CenterText extends StatelessWidget {
 }
 
 // flutter는 모든 것은 widget으로 처리
-// text는 Text widget, layout이면 Scaffold...
+// text는 Text widget, layout이면 Scaffold...r
 
 // 프로젝트 설명
 // lib - dart파일이 들어가는 폴더
@@ -141,3 +172,7 @@ class CenterText extends StatelessWidget {
 
 // column
 // vertical로 childrun 표시, scroll 불가
+
+// row: horizental 표시, scroll 불가
+// flexible: 여러 flexible 위젯이 있으면 flex 값을 줘서 비율 정하기 가능
+// expanded: flex 값 내에서 허용된 너비를 모두 사용
