@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbasics/presentation/widgets_example/widget/button_example.dart';
 import 'expanedRowExample.dart';
 import 'HelloWorldExample.dart';
+import 'columnData.dart';
 
 // extract 기능으로 손쉽게 추출 가능
 class CenterText extends StatelessWidget {
@@ -14,92 +16,18 @@ class CenterText extends StatelessWidget {
       color: Colors.pink,
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.max, // 안그러면 길이가 최대로 잡힘, max도 마찬가지
-          crossAxisAlignment: CrossAxisAlignment.center, // x축
-          children: [
+          children: const [
             // const Expanded(child: Text("Last"),),
             // 높이가 const가 아니므로 크기를 결정할 수 없어 표시가 되지 않음(NEEDS-COMPOSITING-BITS-UPDATE)
             // singlechildscrollview에서는 Expaneded 불가
-            const ExpanedRowExample(),
-            const HelloWorldExample(),
-            const SizedBox(
-              // swiftui spacer 사이즈 준 거랑 비슷한 듯
-              height: 30,
-              width: double.infinity,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.blue,
-              ),
-              width: 150,
-              height: 150,
-              child: const Center(
-                child: Text(
-                  "Hello",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const SizedBox(
-              width: 100,
-              height: 100,
-              child: CircleAvatar(
-                  backgroundImage: NetworkImage("https://picsum.photos/200")),
-            ),
-            Stack(
-              // swiftui의 zstack 비슷한 듯
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 150,
-                  child: Image.asset(
-                    'assets/logo.jpeg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const Positioned(
-                  top: 130,
-                  child: Text("Logo"),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width, // 기기 전체 넓이, context를 쓸 때는 MaterialApp context말고 별도로 exclude 한 다음 사용 해야 함, 아니면 builder 사용
-              height: 100,
-              color: Colors.green,
-              child: const Center(
-                child: Text("Last Text"),
-              ),
-            ),
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return Container(
-                  width: constraints.maxWidth / 2,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: Text("Layout Builder Text"),
-                  ),
-                );
-              },
-            )
+            ExpanedRowExample(),
+            HelloWorldExample(),
+            ColumnData(),
+            ButtonExample(),
           ],
         ),
       ),
-    ); 
+    );
   }
 }
 

@@ -8,11 +8,9 @@ class ExpanedRowExample extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          child: Expanded(
-            flex: 1, // 비율을 의미, flex를 두개를 10, 10 주면 50%, 50% 차지
-            child: Text("1. row1 veryverylong sentences..........."),
-          ),
+        const Expanded(
+          flex: 1, // 비율을 의미, flex를 두개를 10, 10 주면 50%, 50% 차지
+          child: Text("1. row1 veryverylong sentences..........."),
         ),
         Container(
           height: 20,
