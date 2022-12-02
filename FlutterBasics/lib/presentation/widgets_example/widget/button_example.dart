@@ -41,7 +41,7 @@ class ButtonExample extends StatelessWidget {
         ),
 
         Switch(value: true, onChanged: (value) {
-          print(value);
+          print(value); // stateless므로 변화하지는 않을 것
         },)
       ],
     );

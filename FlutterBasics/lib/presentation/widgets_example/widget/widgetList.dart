@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbasics/presentation/components/custom_button.dart';
 import 'package:flutterbasics/presentation/widgets_example/widget/button_example.dart';
+import '../../components/custom_button_gesture.dart';
 import 'expanedRowExample.dart';
 import 'HelloWorldExample.dart';
 import 'columnData.dart';
 
 // extract 기능으로 손쉽게 추출 가능
-class CenterText extends StatelessWidget {
-  const CenterText({
+class WidgetList extends StatelessWidget {
+  const WidgetList({
     Key? key,
   }) : super(key: key);
 
@@ -16,14 +18,30 @@ class CenterText extends StatelessWidget {
       color: Colors.pink,
       child: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             // const Expanded(child: Text("Last"),),
             // 높이가 const가 아니므로 크기를 결정할 수 없어 표시가 되지 않음(NEEDS-COMPOSITING-BITS-UPDATE)
             // singlechildscrollview에서는 Expaneded 불가
-            ExpanedRowExample(),
-            HelloWorldExample(),
-            ColumnData(),
-            ButtonExample(),
+            const ExpanedRowExample(),
+            const HelloWorldExample(),
+            const ColumnData(),
+            const ButtonExample(),
+            SizedBox(
+              child: CustomButton(
+                  onTap: () {
+                    print('CustomButton Tapped');
+                  },
+                  icon: Icons.home,
+                  iconColor: Colors.white),
+            ),
+            SizedBox(
+              child: CustomButtonGesture(
+                onTap: () {
+                  print('CustomButtonGesture Tapped');
+                },
+                text: 'Button',
+              ),
+            ),
           ],
         ),
       ),

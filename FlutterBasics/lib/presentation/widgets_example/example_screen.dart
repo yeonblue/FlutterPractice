@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widget/centerText.dart';
+import 'widget/widgetList.dart';
 class ExampleScreen extends StatelessWidget {
   const ExampleScreen({super.key});
 
@@ -11,7 +11,7 @@ class ExampleScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Flutter Basics"),
         ),
-        body: const CenterText(),
+        body: const WidgetList(),
         floatingActionButton: FloatingActionButton(
           onPressed: () => debugPrint("Clicked"),
           child: const Icon(Icons.ac_unit),
