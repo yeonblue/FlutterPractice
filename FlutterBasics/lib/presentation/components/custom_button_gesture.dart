@@ -14,7 +14,7 @@ class CustomButtonGesture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return GestureDetector( // splash animation 추가는 불가능
       onTap: () => onTap(),
       child: Container(
         width: 50,

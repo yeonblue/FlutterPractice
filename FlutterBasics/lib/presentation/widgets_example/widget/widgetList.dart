@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbasics/presentation/components/custom_button.dart';
 import 'package:flutterbasics/presentation/widgets_example/widget/button_example.dart';
+import 'package:flutterbasics/presentation/widgets_example/widget/custom_image.dart';
 import '../../components/custom_button_gesture.dart';
 import 'expanedRowExample.dart';
 import 'HelloWorldExample.dart';
@@ -42,6 +43,12 @@ class WidgetList extends StatelessWidget {
                 text: 'Button',
               ),
             ),
+            const CustomImage(
+              url: 'https://picsum.photos/200',
+              name: 'Good Image',
+              location: 'Seoul',
+              country: 'Korea',
+            )
           ],
         ),
       ),
