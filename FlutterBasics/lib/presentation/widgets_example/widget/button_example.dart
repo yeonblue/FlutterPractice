@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ButtonExample extends StatelessWidget {
+class ButtonExample extends StatefulWidget { // 앱 전체를 stafeful로 사용하는 것은 성능에 좋지 않음
   const ButtonExample({super.key});
+
+  @override
+  State<ButtonExample> createState() => _ButtonExampleState();
+}
+
+class _ButtonExampleState extends State<ButtonExample> {
+  bool switchState = true;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +47,12 @@ class ButtonExample extends StatelessWidget {
           icon: const Icon(Icons.play_arrow),
         ),
 
-        Switch(value: true, onChanged: (value) {
-          print(value); // stateless므로 변화하지는 않을 것
+        Switch(value: switchState, onChanged: (value) {
+          
+          setState(() { // 새로 re-render 요청
+            switchState = value; // stafeful이라 상태 변경 가능
+            // 모든 page가 stafeful이면 bad-performance를 보일 것
+          });
         },)
       ],
     );
