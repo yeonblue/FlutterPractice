@@ -30,7 +30,7 @@ class WidgetList extends StatelessWidget {
             SizedBox(
               child: CustomButton(
                   onTap: () {
-                    print('CustomButton Tapped');
+                    Navigator.pushNamed(context, '/screenOne');
                   },
                   icon: Icons.home,
                   iconColor: Colors.white),

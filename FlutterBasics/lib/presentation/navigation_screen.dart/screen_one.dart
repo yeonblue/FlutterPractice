@@ -14,7 +14,7 @@ class ScreenOne extends StatelessWidget {
         child: TextButton(
           child: const Text('Go Back'),
           onPressed: () {
-            Navigator.pop(context); // most top으로 보냄
+            Navigator.popUntil(context, (route) => route.isFirst); // root까지 pop
           },
         ),
       )
