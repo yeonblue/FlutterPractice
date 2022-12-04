@@ -5,6 +5,7 @@ import 'package:flutterbasics/presentation/navigation_screen.dart/screen_one.dar
 import 'package:flutterbasics/presentation/navigation_screen.dart/screen_two.dart';
 import 'package:flutterbasics/presentation/widgets_example/example_screen.dart';
 import 'package:flutterbasics/root_bottom_navigation.dart';
+import 'package:flutterbasics/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.amber),
-      ),
+      themeMode: ThemeMode.system,
+      theme: Apptheme.lightTheme,
+      darkTheme: Apptheme.darkTheme,
       debugShowCheckedModeBanner: false, // 우측 상단 디버그 사라지게
       home: const RootBottomNavigation(),
       routes: <String, WidgetBuilder> {

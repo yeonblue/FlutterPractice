@@ -21,8 +21,8 @@ final String country;
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        
-          color: Colors.tealAccent, borderRadius: BorderRadius.circular(16)),
+          color: Theme.of(context).colorScheme.primaryContainer, // light, dark 테마에 따라 색 변경 됨
+          borderRadius: BorderRadius.circular(16)),
       child: Column(
         children: [
           Stack(
