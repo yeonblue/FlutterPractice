@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbasics/presentation/navigation_screen.dart/screen_one.dart';
+import 'package:flutterbasics/presentation/navigation_screen.dart/screen_two.dart';
 
 class ButtonExample extends StatefulWidget { // 앱 전체를 stafeful로 사용하는 것은 성능에 좋지 않음
   const ButtonExample({super.key});
@@ -16,7 +18,10 @@ class _ButtonExampleState extends State<ButtonExample> {
       children: [
         TextButton(
           onPressed: () {
-            print('TextButton Tapped');
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const ScreenTwo();
+            },),
+            );
           },
           onLongPress: () {
             print('TextButton Long Tapped');

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutterbasics/presentation/counter/counter_screen.dart';
 import 'package:flutterbasics/presentation/list/list_screen.dart';
+import 'package:flutterbasics/presentation/widgets_example/example_screen.dart';
 import 'package:flutterbasics/presentation/widgets_example/widget/widgetList.dart';
 
 class RootBottomNavigation extends StatefulWidget {
@@ -22,8 +23,8 @@ class _RootBottomNavigationState extends State<RootBottomNavigation> {
       body: IndexedStack(
         index: _currentIdx,
         children: const [
-          WidgetList(),
-          CounterScreen(),
+          ExampleScreen(),
+          CounterScreen(), // const로 되어 있어서 state를 다른 탭을 갔
           ListScreen(),
         ],
       ),
