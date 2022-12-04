@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbasics/application/theme_service.dart';
+import 'package:provider/provider.dart';
 import 'widget/widgetList.dart';
 class ExampleScreen extends StatelessWidget {
   const ExampleScreen({super.key});
@@ -13,7 +15,9 @@ class ExampleScreen extends StatelessWidget {
         ),
         body: const WidgetList(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => debugPrint("Clicked"),
+          onPressed: () {
+            Provider.of<ThemeService>(context, listen: false).toggleTheme();
+          },
           child: const Icon(Icons.ac_unit),
         ),
       );
